@@ -1,6 +1,12 @@
-# InkSpire - AI-Powered Journaling Platform
+# InkSpire - AI-Powered Journaling Platform 
 
-![InkSpire Logo](https://placehold.co/600x200?text=InkSpire+Logo) <!-- Replace with actual logo -->
+![image](https://github.com/user-attachments/assets/1006bfb1-4da5-4e08-9815-e8984869c407)
+
+## Live Demo
+[Live: https://inkspirejournal.vercel.app](https://inkspirejournal.vercel.app)
+
+
+
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -10,7 +16,7 @@
 - [Usage](#usage)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
@@ -22,42 +28,53 @@ InkSpire is an AI-enhanced journaling platform that helps users track their mood
 - Inspirational quotes tailored to your emotional state
 - Deep insights from your journal entries
 
-[![Demo Video](https://placehold.co/600x400?text=Demo+Video+Placeholder)](https://youtu.be/demo) <!-- Replace with actual demo video -->
+
 
 ## Features
 
 ### ✨ AI-Powered Journal Analysis
-![AI Analysis Screenshot](https://placehold.co/600x400?text=AI+Analysis+Screen) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/11d03563-c589-45c1-af07-0746c5b1f826)
+
 - Sentiment analysis of journal entries
 - Mood pattern recognition over time
 - Emotional state visualization
 
 ### 💡 Personalized Recommendations
-![Recommendations Screenshot](https://placehold.co/600x400?text=Recommendations+Screen) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/360bf391-cb72-41f2-ab58-b3bc1431883e)
 - Activity suggestions based on mood
 - Healthcare tips (sleep, nutrition, exercise)
 - Curated inspirational quotes
 - Writing prompts for self-reflection
 
 ### 📊 Mood Tracking & Analytics
-![Analytics Screenshot](https://placehold.co/600x400?text=Analytics+Dashboard) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/3317a17b-4e17-4955-b665-2262ee1a5482)
+
 - Visual mood timeline
 - Weekly/Monthly mood reports
 - Correlation between activities and mood
 
 ### 📝 Smart Journaling
-![Journal Screenshot](https://placehold.co/600x400?text=Journal+Interface) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/2cb082c7-63d6-4472-845c-6042c101a364)
+
 - Rich text formatting
 - Entry tagging and categorization
-- Search across all entries
-- Voice-to-text input
+- Code Snippets, Links, etc support
+
+### 📝 Smart Journaling
+![image](https://github.com/user-attachments/assets/cb0a52c0-a8b8-46b0-bc75-fecab621e064)
+![image](https://github.com/user-attachments/assets/11f9b7a1-6d26-44f1-ae1e-f954da805a42)
+
+-Auto generated images for each journal
+- Collections of journals
+- Unbounded Journals
+- Filter and search
 
 ### 🔍 AI Insights
-![Insights Screenshot](https://placehold.co/600x400?text=AI+Insights) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/106d3725-7f82-4096-a2fa-0ef9b910168b)
+
 - Key themes identification
 - Behavioral patterns
-- Personal growth tracking
-- Custom reports
+  
 
 ## Technology Stack
 
@@ -155,16 +172,17 @@ cd ../ai-services && python main.py
 ## Screenshots
 
 ### Dashboard Overview
-![Dashboard](https://placehold.co/600x400?text=Dashboard+View) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/03d81616-4cf4-49f0-9cd3-8b3bf9954268)
+
 
 ### Journal Entry Interface
-![Entry View](https://placehold.co/600x400?text=Journal+Entry) <!-- Replace with actual screenshot -->
+![image](https://github.com/user-attachments/assets/6c76437d-7508-4036-b293-fb9a04164d6c)
 
-### Mood Analytics
-![Mood Analytics](https://placehold.co/600x400?text=Mood+Analytics) <!-- Replace with actual screenshot -->
 
-### AI Recommendations
-![Recommendations](https://placehold.co/600x400?text=AI+Recommendations) <!-- Replace with actual screenshot -->
+### Journal View
+![image](https://github.com/user-attachments/assets/0ff25bfe-c143-4b98-b674-a997675ea994)
+
+
 
 ## Contributing
 
@@ -176,4 +194,10 @@ We welcome contributions! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-See our [Contribution Guidelines](CONTRIBUTING.md) for more details.
+## Contacts
+
+### LinkedIn http://www.linkedin.com/in/adarshpandey1133
+### Instagram https://www.instagram.com/rnkpandey/
+### mail adarshp.1133@gmail.com
+### Twitter https://x.com/proffgarryoak
+### Portfolio adarshp1133@vercel.app
