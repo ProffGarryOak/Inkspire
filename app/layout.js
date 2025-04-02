@@ -14,8 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Inkspire",
-  description: "Journaling for developers",
+  title: "Inkspire - AI Journaling",
+  description: "AI-powered journaling with mood analysis and insights.",
+  openGraph: {
+    type: "website",
+    url: "https://inkspirejournal.vercel.app/",
+    title: "Inkspire - AI Journaling",
+    description: "AI-powered journaling with mood analysis.",
+    images: [
+      {
+        url: "https://drive.google.com/file/d/1FbIl0uYbIarkF6inaxXRA3X1XuwJddL6/view?usp=sharing",
+        width: 1200,
+        height: 630,
+        alt: "Inkspire Preview",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
