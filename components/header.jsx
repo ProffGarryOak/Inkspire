@@ -28,14 +28,14 @@
 //           <Link href={isSignedIn ? "/dashboard" : "/"} className="flex items-center gap-2 hover:opacity-80 transition">
 //             <Image
 //               src="/logo.png"
-//               alt="InkSpire Logo"
+//               alt="MindInk Logo"
 //               width={100}
 //               height={40}
 //               priority
 //               className="h-10 w-auto"
 //             />
 //             <span className="text-2xl font-bold text-[#b33a3a] font-shikamaru hidden sm:block">
-//               <h1>InkSpire</h1>
+//               <h1>MindInk</h1>
 //             </span>
 //           </Link>
 //         </div>
@@ -125,41 +125,41 @@ async function Header() {
   await checkUser();
 
   return (
-    <header className="w-full bg-[#1c1c1c] shadow-md">
+    <header className="w-full bg-[#181818] shadow-md border-b border-[#ffd60033]">
       <nav className="container mx-auto px-5 py-5 flex justify-between items-center">
-      <div className="flex items-center">
-          <Link href={"/"} className="flex items-center gap-2 hover:opacity-80 transition">
+        <div className="flex items-center gap-3">
+          <Link href={"/"} className="flex items-center gap-3 hover:opacity-90 transition">
             <Image
               src="/logo.png"
-              alt="InkSpire Logo"
-              width={100}
+              alt="MindInk Logo"
+              width={80}
               height={40}
               priority
-              className="h-10 w-auto"
+              className="h-10 w-auto rounded shadow-md border border-[#ffd60033] bg-[#232323]"
             />
-            <span className="text-2xl font-bold text-[#b33a3a] font-shikamaru hidden sm:block">
-              <h1>InkSpire</h1>
+            <span className="text-2xl font-bold text-[#ffd600] tracking-tight font-sans">
+              <h1>MindInk</h1>
             </span>
           </Link>
         </div>
         <div className="flex items-center gap-4">
           <SignedIn>
             <Link href="/dashboard#collections">
-            <Button className="bg-[#b33a3a] hover:bg-[#b33a3a]/90 text-white px-5">
+              <Button className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] px-5 rounded-full font-semibold shadow-sm border border-[#ffd600]">
                 <FolderOpen size={18} />
                 <span className="hidden md:inline">Collections</span>
               </Button>
             </Link>
           </SignedIn>
           <Link href="/journal/write">
-          <Button className="bg-[#e5e5e5] hover:bg-[#e5e5e5]/90 text-#b33a3a px-5">
+            <Button className="bg-[#232323] hover:bg-[#ffd600]/10 text-[#ffd600] px-5 rounded-full font-semibold shadow-sm border border-[#ffd600]">
               <PenBox size={18} />
               <span className="hidden md:inline">Write New</span>
             </Button>
           </Link>
           <SignedOut>
             <SignInButton forceRedirectUrl="/dashboard">
-            <Button className="bg-[#b33a3a] hover:bg-[#b33a3a]/90 text-white">Login</Button>
+              <Button className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] rounded-full font-semibold shadow-sm border border-[#ffd600]">Login</Button>
             </SignInButton>
           </SignedOut>
           <SignedIn>

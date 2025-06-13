@@ -204,9 +204,9 @@ export default function JournalEntryPage() {
     savingDraft;
 
   return (
-    <div className="container mx-auto px-4 py-0">
-      <form onSubmit={onSubmit} className="space-y-5  mx-auto">
-        <h1 className="text-4xl font-bold text-[#b33a3a] font-shikamaru flex items-center gap-3">
+    <div className="container mx-auto px-4 py-10 flex flex-col items-center min-h-[90vh] bg-[#181818] rounded-2xl shadow-xl mt-8 mb-8">
+      <form onSubmit={onSubmit} className="w-full max-w-2xl bg-[#232323] rounded-2xl shadow-lg p-8 space-y-8 border border-[#ffd60033]">
+        <h1 className="text-4xl font-extrabold text-[#ffd600] flex items-center gap-3 mb-6 drop-shadow-lg">
           {isEditMode ? (
             <>
               <Edit className="h-8 w-8" />
@@ -219,16 +219,12 @@ export default function JournalEntryPage() {
             </>
           )}
         </h1>
-
         {isLoading && (
-          <BarLoader className="mb-4" width={"100%"} color="#b33a3a" />
+          <BarLoader className="mb-4" width={"100%"} color="#ffd600" />
         )}
-
-        
-
-        <div className="space-y-2 mt-10">
-          <label className="text-sm font-medium text-[#1c1c1c] flex items-center gap-2">
-            <Smile className="h-4 w-4 text-[#b33a3a]" />
+        <div className="space-y-2 mt-6">
+          <label className="text-sm font-semibold text-[#ffd600] flex items-center gap-2">
+            <Smile className="h-4 w-4 text-[#ffd600]" />
             How are you feeling?
           </label>
           <Controller
@@ -237,18 +233,16 @@ export default function JournalEntryPage() {
             render={({ field }) => (
               <Select onValueChange={field.onChange} value={field.value}>
                 <SelectTrigger
-                  className={`text-[#1c1c1c] bg-[#fff] border-[#1c1c1c]/20 focus:border-[#b33a3a] focus:ring-[#b33a3a]/50 ${
-                    errors.mood ? "border-red-500" : ""
-                  }`}
+                  className={`text-[#181818] bg-[#fffbe6] border-[#ffd600] focus:border-[#ffd600] focus:ring-[#ffd600]/50 ${errors.mood ? "border-red-500" : ""}`}
                 >
                   <SelectValue placeholder="Select a mood..." />
                 </SelectTrigger>
-                <SelectContent className="border-[#1c1c1c]/20 bg-[#e5e5e5]">
+                <SelectContent className="border-[#ffd600] bg-[#232323] text-[#ffd600]">
                   {Object.values(MOODS).map((mood) => (
                     <SelectItem
                       key={mood.id}
                       value={mood.id}
-                      className="hover:bg-[#b33a3a]/10 focus:bg-[#b33a3a]/10"
+                      className="hover:bg-[#ffd600]/10 focus:bg-[#ffd600]/10"
                     >
                       <span className="flex items-center gap-2">
                         {mood.emoji} {mood.label}
@@ -266,20 +260,16 @@ export default function JournalEntryPage() {
             </p>
           )}
         </div>
-
-
-        <div className="space-y-2 ">
-          <label className="text-sm font-medium text-[#1c1c1c] flex items-center gap-2">
-            <Bookmark className="h-4 w-4 text-[#b33a3a]" />
+        <div className="space-y-2">
+          <label className="text-sm font-semibold text-[#ffd600] flex items-center gap-2">
+            <Bookmark className="h-4 w-4 text-[#ffd600]" />
             Title
           </label>
           <Input
             disabled={isLoading}
             {...register("title")}
             placeholder="Give your entry a title..."
-            className={`py-4 bg-[#fff] text-[#1c1c1c] border-[#1c1c1c]/20 focus:border-[#b33a3a] focus:ring-[#b33a3a]/50 ${
-              errors.title ? "border-red-500" : ""
-            }`}
+            className={`py-4 bg-[#fffbe6] text-[#181818] border-[#ffd600] focus:border-[#ffd600] focus:ring-[#ffd600]/50 ${errors.title ? "border-red-500" : ""}`}
           />
           {errors.title && (
             <p className="text-red-500 text-sm flex items-center gap-1">
@@ -288,14 +278,11 @@ export default function JournalEntryPage() {
             </p>
           )}
         </div>
-
-        
         <div className="space-y-2">
-          <label className="text-sm font-medium flex items-center gap-2">
-            <MessageSquare className="h-4 w-4 text-[#b33a3a]" />
+          <label className="text-sm font-semibold text-[#ffd600] flex items-center gap-2">
+            <MessageSquare className="h-4 w-4 text-[#ffd600]" />
             {getMoodById(getValues("mood"))?.prompt ?? "Write your thoughts..."}
           </label>
-
           <Controller
             name="content"
             control={control}
@@ -315,86 +302,84 @@ export default function JournalEntryPage() {
                     ["clean"],
                   ],
                 }}
+                className="bg-[#fffbe6] text-[#181818] rounded-lg border border-[#ffd600] min-h-[180px]"
               />
             )}
           />
           {errors.content && (
-            <p className="text-red-500 text-sm">
+            <p className="text-red-500 text-sm flex items-center gap-1">
               <AlertCircle className="h-4 w-4" />
               {errors.content.message}
             </p>
           )}
         </div>
-
         <div className="space-y-3">
-  <label className="text-sm font-medium text-[#1c1c1c] flex items-center gap-2">
-    <FolderPlus className="h-4 w-4 text-[#b33a3a]" />
-    Add to Collection (Optional)
-  </label>
-  <Controller
-    name="collectionId"
-    control={control}
-    render={({ field }) => (
-      <Select
-        onValueChange={(value) => {
-          if (value === "new") {
-            setIsCollectionDialogOpen(true);
-          } else {
-            field.onChange(value);
-          }
-        }}
-        value={field.value}
-      >
-        <SelectTrigger className="text-[#1c1c1c] border-[#1c1c1c]/20 focus:border-[#b33a3a] bg-[#fff] focus:ring-[#b33a3a]/50">
-          <SelectValue placeholder="Choose a collection..." />
-        </SelectTrigger>
-        <SelectContent className="border-[#1c1c1c]/20 bg-[#e5e5e5]">
-          {collections?.map((collection) => (
-            <SelectItem 
-              key={collection.id} 
-              value={collection.id}
-              className="hover:bg-[#b33a3a]/10 focus:bg-[#b33a3a]/10"
+          <label className="text-sm font-semibold text-[#ffd600] flex items-center gap-2">
+            <FolderPlus className="h-4 w-4 text-[#ffd600]" />
+            Add to Collection (Optional)
+          </label>
+          <Controller
+            name="collectionId"
+            control={control}
+            render={({ field }) => (
+              <Select
+                onValueChange={(value) => {
+                  if (value === "new") {
+                    setIsCollectionDialogOpen(true);
+                  } else {
+                    field.onChange(value);
+                  }
+                }}
+                value={field.value}
+              >
+                <SelectTrigger className="text-[#181818] border-[#ffd600] bg-[#fffbe6] focus:border-[#ffd600] focus:ring-[#ffd600]/50">
+                  <SelectValue placeholder="Choose a collection..." />
+                </SelectTrigger>
+                <SelectContent className="border-[#ffd600] bg-[#232323] text-[#ffd600]">
+                  {collections?.map((collection) => (
+                    <SelectItem
+                      key={collection.id}
+                      value={collection.id}
+                      className="hover:bg-[#ffd600]/10 focus:bg-[#ffd600]/10"
+                    >
+                      {collection.name}
+                    </SelectItem>
+                  ))}
+                  <SelectItem
+                    value="new"
+                    className="hover:bg-[#ffd600]/10 focus:bg-[#ffd600]/10"
+                  >
+                    <span className="flex items-center gap-2 text-[#ffd600]">
+                      <PlusCircle className="h-4 w-4" />
+                      Create New Collection
+                    </span>
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            )}
+          />
+        </div>
+        <div className="flex gap-4 mt-6">
+          {!isEditMode && (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleSaveDraft}
+              disabled={savingDraft || !isDirty}
+              className="border-[#ffd600] text-[#ffd600] hover:bg-[#ffd600]/10 hover:text-[#ffd600] disabled:opacity-50"
             >
-              {collection.name}
-            </SelectItem>
-          ))}
-          <SelectItem 
-            value="new"
-            className="hover:bg-[#b33a3a]/10 focus:bg-[#b33a3a]/10"
+              {savingDraft && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Save as Draft
+            </Button>
+          )}
+          <Button
+            type="submit"
+            disabled={actionLoading || !isDirty}
+            className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] font-bold shadow-md px-8 py-3 rounded-full disabled:opacity-50"
           >
-            <span className="flex items-center gap-2 text-[#b33a3a]">
-              <PlusCircle className="h-4 w-4" />
-              Create New Collection
-            </span>
-          </SelectItem>
-        </SelectContent>
-      </Select>
-    )}
-  />
-</div>
-
-<div className="space-x-4 flex">
-  {!isEditMode && (
-    <Button
-      type="button"
-      variant="outline"
-      onClick={handleSaveDraft}
-      disabled={savingDraft || !isDirty}
-      className="border-[#1c1c1c] text-[#1c1c1c] hover:bg-[#1c1c1c]/10 hover:text-[#1c1c1c] disabled:opacity-50"
-    >
-      {savingDraft && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-      Save as Draft
-    </Button>
-  )}
-  <Button
-    type="submit"
-    disabled={actionLoading || !isDirty}
-    className="bg-[#b33a3a] hover:bg-[#b33a3a]/90 text-white disabled:opacity-50"
-  >
-    {actionLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-    {isEditMode ? "Update" : "Publish"}
-  </Button>
-
+            {actionLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {isEditMode ? "Update" : "Publish"}
+          </Button>
           {isEditMode && (
             <Button
               onClick={(e) => {
@@ -402,13 +387,13 @@ export default function JournalEntryPage() {
                 router.push(`/journal/${existingEntry.id}`);
               }}
               variant="destructive"
+              className="bg-[#232323] text-[#ffd600] border border-[#ffd600] hover:bg-[#ffd600] hover:text-[#181818]"
             >
               Cancel
             </Button>
           )}
         </div>
       </form>
-
       <CollectionForm
         loading={createCollectionLoading}
         onSuccess={handleCreateCollection}

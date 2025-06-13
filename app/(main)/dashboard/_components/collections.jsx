@@ -19,7 +19,7 @@ const Collections = ({ collections = [], entriesByCollection = {} }) => {
   useEffect(() => {
     if (createdCollection) {
       setIsCollectionDialogOpen(false);
-      toast.success(`Collection "${createdCollection.name}" created!`);
+      toast.success(`Collection \"${createdCollection.name}\" created!`);
     }
   }, [createdCollection]);
 
@@ -28,25 +28,17 @@ const Collections = ({ collections = [], entriesByCollection = {} }) => {
   };
 
   return (
-    <section id="collections" className="space-y-6">
-      <h2 className="text-3xl font-bold gradient-title my-12 text-[#b33a3a]">
+    <section id="collections" className="space-y-8">
+      <h2 className="text-4xl font-extrabold gradient-title my-12 text-[#ffd600] drop-shadow-lg text-center tracking-tight">
         Collections
       </h2>
-
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* Create New Collection Button */}
-        {/* <CollectionPreview
-          isCreateNew={true}
-          onCreateNew={() => setIsCollectionDialogOpen(true)}
-        /> */}
-
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {/* Always show Unorganized collection */}
         <CollectionPreview
           name="Unbound Entries"
           entries={entriesByCollection.unorganized || []}
           isUnorganized={true}
         />
-
         {/* Show all collections, even empty ones */}
         {collections.map((collection) => (
           <CollectionPreview
@@ -56,7 +48,14 @@ const Collections = ({ collections = [], entriesByCollection = {} }) => {
             entries={entriesByCollection[collection.id] || []}
           />
         ))}
-
+        {/* Creative Add New Collection Card */}
+        <button
+          onClick={() => setIsCollectionDialogOpen(true)}
+          className="group relative h-[240px] w-full cursor-pointer border-2 border-dashed border-[#ffd600] rounded-2xl flex flex-col items-center justify-center bg-[#232323] hover:bg-[#ffd600]/10 transition-all shadow-lg"
+        >
+          <span className="text-5xl text-[#ffd600] mb-2">+</span>
+          <span className="text-[#ffd600] font-semibold text-lg">Create New Collection</span>
+        </button>
         <CollectionForm
           loading={createCollectionLoading}
           onSuccess={handleCreateCollection}

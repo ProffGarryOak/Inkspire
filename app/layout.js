@@ -14,12 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Inkspire - AI Journaling",
+  title: "MindInk - AI Journaling",
   description: "AI-powered journaling with mood analysis and insights.",
   openGraph: {
     type: "website",
     url: "https://inkspirejournal.vercel.app/",
-    title: "Inkspire - AI Journaling",
+    title: "MindInk - AI Journaling",
     description: "AI-powered journaling with mood analysis.",
     images: [
       {

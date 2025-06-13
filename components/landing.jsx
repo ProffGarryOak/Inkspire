@@ -44,145 +44,111 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen bg-[#e5e5e5] text-[#1c1c1c]">
+    <div className="min-h-screen bg-[#181818] text-[#fffbe6] flex flex-col">
       {/* Navigation */}
-      <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="flex items-center gap-2">
+      <nav className="w-full px-0 py-6 flex justify-center items-center border-b border-[#ffd60033]">
+        <div className="flex items-center gap-3">
           <Image
             src="/logo.png"
-            alt="InkSpire Logo"
-            width={120}
-            height={60}
-            className="h-12 w-auto"
+            alt="MindInk Logo"
+            width={80}
+            height={40}
+            className="h-10 w-auto rounded shadow-md border border-[#ffd60033] bg-[#232323]"
             priority
           />
-          <span className="text-2xl font-bold tracking-tighter"><h1>InkSpire</h1></span>
-        </div>
-        <div className="flex gap-4">
-          
-          <AuthButton 
-            variant="outline"
-            className="bg-[#b33a3a] hover:bg-[#b33a3a]/90 text-white px-5 hover:text-white"
-          >
-            {isSignedIn ? 'Go to Dashboard' : 'Get Started'}
-          </AuthButton>
+          <span className="text-2xl font-bold tracking-tight text-[#ffd600] font-sans"><h1>MindInk</h1></span>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-12">
-        <div className="md:w-1/2 space-y-6">
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-            <span className="block">Your AI-Powered</span>
-            <span className="text-[#b33a3a]">Journal Companion</span>
-          </h1>
-          <p className="text-xl text-[#1c1c1c]/80">
-            InkSpire uses advanced AI to analyze your moods and summarize your thoughts,
-            helping you gain deeper self-awareness through journaling.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <AuthButton 
-              className="bg-[#b33a3a] hover:bg-[#b33a3a]/90 text-white px-6 py-6 text-lg sm:px-8"
-              isPrimary
-            >
-              <PenBox size={18} />
-              {isSignedIn ? 'Continue Writing' : 'Begin Your Journey'}
-            </AuthButton>
-            <Button
-              onClick={scrollToFeatures}
-              variant="outline"
-              className="border-[#1c1c1c] text-[#1c1c1c] hover:bg-[#1c1c1c]/10 px-6 py-6 text-lg sm:px-8"
-            >
-              Learn More
-            </Button>
-          </div>
-        </div>
-        <div className="md:w-1/2 flex justify-center">
-          <Image
-            src="/japanese-journal.png"
-            alt="Journal interface"
-            width={500}
-            height={500}
-            priority
-            className=""
-          />
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section ref={featuresRef} className="bg-white py-20">
-        <Waves size={35} className="text-[#e7e7e7] mb-8 mx-auto"/>
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            The <span className="text-[#b33a3a]">InkSpire</span> Difference
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Brain className="h-8 w-8 text-[#b33a3a]" />,
-                title: 'AI Mood Analysis',
-                description: 'Our AI detects emotional patterns and provides insights about your mood trends',
-              },
-              {
-                icon: <Sparkles className="h-8 w-8 text-[#b33a3a]" />,
-                title: 'Smart Summaries',
-                description: 'Get concise summaries of your entries to spot key themes and patterns',
-              },
-              {
-                icon: <Cloud className="h-8 w-8 text-[#b33a3a]" />,
-                title: 'Cloud Sync',
-                description: 'Access your journal from any device, anytime',
-              },
-            ].map((feature, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-lg transition-shadow border-[#1c1c1c]/10 h-full"
-              >
-                <CardHeader>
-                  <div className="mb-4">{feature.icon}</div>
-                  <CardTitle className="text-2xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-[#1c1c1c]/80">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* About Button */}
-          <div className="flex justify-center mt-16">
-            <Link href="/about">
-              <Button 
-                variant="outline" 
-                className="border-[#b33a3a] text-[#b33a3a] hover:bg-[#b33a3a]/10 px-8 py-6 text-lg"
-              >
-                Learn More About InkSpire
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 bg-[#b33a3a]/5">
-        <div className="container mx-auto px-4 text-center">
-          <Cherry className="h-12 w-12 text-[#b33a3a] mx-auto mb-4" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Begin Your AI-Enhanced Journaling
-          </h2>
-          <p className="text-xl text-[#1c1c1c]/80 mb-8 max-w-2xl mx-auto">
-            Join thousands discovering deeper self-awareness through intelligent journaling.
-          </p>
+      {/* Hero Section - Centered, vertical, bold */}
+      <section className="flex-1 flex flex-col justify-center items-center text-center px-4 py-16 gap-8">
+        <h1 className="text-5xl md:text-7xl font-extrabold leading-tight text-[#ffd600] drop-shadow-lg mb-4">
+          Unlock Your Mind
+        </h1>
+        <p className="text-2xl md:text-3xl text-[#fffbe6]/90 max-w-2xl mx-auto mb-8">
+          MindInk is your AI-powered journal companion for deep self-reflection, mood insights, and personal growth.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <AuthButton 
-            className="bg-[#b33a3a] hover:bg-[#b33a3a]/90 text-white px-8 py-6 text-lg"
+            className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] px-10 py-6 text-xl rounded-full font-bold shadow-lg border border-[#ffd600]"
             isPrimary
           >
-            {isSignedIn ? 'Go to Dashboard' : 'Start Writing Now'}
+            <PenBox size={22} />
+            {isSignedIn ? 'Continue Writing' : 'Start Journaling'}
           </AuthButton>
+          <Button
+            onClick={scrollToFeatures}
+            variant="outline"
+            className="border-[#ffd600] text-[#ffd600] hover:bg-[#ffd600]/10 px-10 py-6 text-xl rounded-full font-bold shadow-lg"
+          >
+            Explore Features
+          </Button>
         </div>
+      </section>
+
+      {/* Features Section - horizontal scroll, cards pop */}
+      <section ref={featuresRef} className="w-full bg-[#232323] py-20 rounded-t-3xl shadow-inner">
+        <Waves size={40} className="text-[#ffd600] mb-10 mx-auto"/>
+        <h2 className="text-4xl font-extrabold text-center mb-12 text-[#ffd600] tracking-tight">
+          Why MindInk?
+        </h2>
+        <div className="overflow-x-auto flex gap-8 px-8 md:px-20 pb-4 snap-x">
+          {[
+            {
+              icon: <Brain className="h-10 w-10 text-[#ffd600] mx-auto" />,
+              title: 'AI Mood Analysis',
+              description: 'Detect emotional patterns and gain actionable insights about your mood trends.',
+            },
+            {
+              icon: <Sparkles className="h-10 w-10 text-[#ffd600] mx-auto" />,
+              title: 'Smart Summaries',
+              description: 'Concise AI summaries help you spot key themes and reflect on your journey.',
+            },
+            {
+              icon: <Cloud className="h-10 w-10 text-[#ffd600] mx-auto" />,
+              title: 'Cloud Sync',
+              description: 'Access your journal securely from any device, anytime, anywhere.',
+            },
+            {
+              icon: <BookOpen className="h-10 w-10 text-[#ffd600] mx-auto" />,
+              title: 'Private & Secure',
+              description: 'Your entries are encrypted and always yours—privacy is our promise.',
+            },
+            {
+              icon: <Cherry className="h-10 w-10 text-[#ffd600] mx-auto" />,
+              title: 'Beautiful Experience',
+              description: 'A delightful, distraction-free interface designed for mindful writing.',
+            },
+          ].map((feature, idx) => (
+            <Card key={idx} className="min-w-[320px] max-w-xs bg-[#181818] border border-[#ffd60033] rounded-2xl shadow-2xl snap-center flex flex-col items-center py-8 px-6 mx-auto">
+              <CardHeader className="flex flex-col items-center gap-3 mb-2">
+                {feature.icon}
+                <CardTitle className="text-xl font-bold text-[#ffd600] text-center">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-[#fffbe6]/80 text-center text-base">
+                  {feature.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Final CTA - full width, bold, different placement */}
+      <section className="py-20 bg-[#181818] flex flex-col items-center justify-center border-t border-[#ffd60033]">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-[#ffd600] mb-6 text-center">
+          Ready to Begin?
+        </h2>
+        <p className="text-lg md:text-2xl text-[#fffbe6]/80 mb-10 text-center max-w-xl">
+          Join thousands discovering deeper self-awareness through intelligent journaling. Your story starts here.
+        </p>
+        <AuthButton 
+          className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] px-12 py-6 text-xl rounded-full font-bold shadow-xl border border-[#ffd600]"
+          isPrimary
+        >
+          {isSignedIn ? 'Go to Dashboard' : 'Start Writing Now'}
+        </AuthButton>
       </section>
     </div>
   );

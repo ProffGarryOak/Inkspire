@@ -34,47 +34,61 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1c1c1c] text-[#e5e5e5] py-8 px-4">
-      <div className="container mx-auto flex flex-col items-center">
-        {/* Logo and Branding */}
-        <div className="flex flex-col items-center space-y-2 mb-6">
-          <Link href="/" className="flex items-center gap-2">
+    <footer className="relative overflow-hidden bg-[#181818] text-[#fffbe6] py-14 px-4 border-t border-[#ffd60033]">
+      {/* Decorative Accent Circles */}
+      <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#ffd60033] rounded-full blur-2xl opacity-60 pointer-events-none" />
+      <div className="absolute -bottom-16 -right-16 w-56 h-56 bg-[#ffd60033] rounded-full blur-2xl opacity-60 pointer-events-none" />
+      <div className="container mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10 relative z-10">
+        {/* Branding & Description */}
+        <div className="flex flex-col items-center md:items-start gap-3 md:w-1/3">
+          <Link href="/" className="flex items-center gap-4 mb-2">
             <Image
               src="/logo.png"
-              alt="InkSpire Logo"
-              width={100}
-              height={50}
-              className="h-12 w-auto"
+              alt="MindInk Logo"
+              width={90}
+              height={48}
+              className="h-12 w-auto rounded-lg shadow-lg border-2 border-[#ffd600] bg-[#232323]"
             />
-            <span className="text-3xl font-bold text-[#b33a3a] font-shikamaru">
-              InkSpire
+            <span className="text-3xl font-extrabold text-[#ffd600] tracking-tight font-sans drop-shadow-lg">
+              MindInk
             </span>
           </Link>
-          <p className="text-center max-w-md text-[#e5e5e5]/80">
-            Your private journal with traditional encryption
+          <p className="text-left max-w-xs text-[#fffbe6]/80 text-base font-light">
+            Your private journal, beautifully secure and always yours. Express, reflect, and grow with MindInk.
           </p>
         </div>
-
-        {/* Social Links */}
-        <div className="flex space-x-6 mb-8">
-          {SOCIAL_LINKS.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#e5e5e5] hover:text-[#b33a3a] transition-colors"
-              aria-label={link.name}
-            >
-              {link.icon}
-            </a>
-          ))}
+        {/* Social & Quick Links */}
+        <div className="flex flex-col items-center gap-6 md:w-1/3">
+          <div className="flex gap-4 flex-wrap justify-center">
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-[#232323] border-2 border-[#ffd600] p-3 text-[#ffd600] hover:bg-[#ffd600] hover:text-[#181818] transition-colors shadow-md hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#ffd600]"
+                aria-label={link.name}
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
+          <div className="flex gap-6 mt-2 text-sm text-[#ffd600] font-semibold">
+            <Link href="/" className="hover:underline">Home</Link>
+            <Link href="/(main)/about" className="hover:underline">About</Link>
+            <Link href="/(main)/dashboard" className="hover:underline">Dashboard</Link>
+          </div>
         </div>
-
-        {/* Copyright */}
-        <div className="text-center text-sm text-[#e5e5e5]/60">
-          <p>© {new Date().getFullYear()} InkSpire. All rights reserved.</p>
+        {/* Newsletter or CTA */}
+        <div className="flex flex-col items-center md:items-end gap-3 md:w-1/3">
+          <span className="text-lg font-bold text-[#ffd600] mb-1">Stay Inspired</span>
+          <a href="mailto:adarshp.1133@gmail.com" className="inline-block px-6 py-2 rounded-full bg-[#ffd600] text-[#181818] font-semibold shadow-md hover:bg-[#ffe066] transition-colors">Contact Us</a>
+          <p className="text-xs text-[#fffbe6]/60 mt-2">We love feedback and collaboration!</p>
         </div>
+      </div>
+      {/* Copyright */}
+      <div className="mt-10 text-center text-xs text-[#fffbe6]/60 relative z-10">
+        <p>© {new Date().getFullYear()} MindInk. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -20,10 +20,20 @@ export default async function JournalEntryPage({ params }) {
   }
 
   return (
-    <>
-      {/* Header with Mood Image */}
+    <div className="min-h-[90vh] bg-[#181818] rounded-2xl shadow-xl px-4 py-12 flex flex-col items-center mt-8 mb-8">
+      {/* Back to Dashboard Button */}
+      <div className="w-full max-w-3xl mb-8 flex justify-start">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#ffd600] text-[#181818] font-bold shadow-lg hover:bg-[#ffe066] transition-all border-2 border-[#ffd600] text-lg"
+        >
+          <svg className="h-5 w-5 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+          Back to Dashboard
+        </Link>
+      </div>
+      {/* Mood Image */}
       {entry.moodImageUrl && (
-        <div className="relative h-[50vh] w-full">
+        <div className="relative h-[40vh] w-full max-w-3xl rounded-2xl overflow-hidden shadow-lg mb-8 border border-[#ffd60033]">
           <Image
             src={entry.moodImageUrl}
             alt="Mood visualization"
@@ -33,69 +43,48 @@ export default async function JournalEntryPage({ params }) {
           />
         </div>
       )}
-
-      <div className="p-6 space-y-6">
+      <div className="w-full max-w-3xl bg-[#232323] rounded-2xl shadow-lg p-8 border border-[#ffd60033] space-y-8">
         {/* Header Section */}
-        <div className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <h1 className="text-5xl font-bold text-[#1c1c1c]">
-                  {entry.title}
-                </h1>
-              </div>
-              {/* AI Summary Section */}
-              {summary && (
-                <p className="text-[#b33a3a]/80 italic">
-                   {summary}
-                </p>
-              )}
-              <p className="text-[#1c1c1c]/60">
-                Created {format(new Date(entry.createdAt), "PPP")}
-              </p>
-            </div>
-
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <EditButton entryId={id} />
-              <DeleteDialog entryId={id} />
+              <h1 className="text-4xl font-extrabold text-[#ffd600] drop-shadow-lg">{entry.title}</h1>
             </div>
-          </div>
-
-          {/* Tags Section */}
-          <div className="flex flex-wrap gap-2">
-            {entry.collection && (
-              <Link href={`/collection/${entry.collection.id}`}>
-                <Badge>Collection: {entry.collection.name}</Badge>
-              </Link>
+            {/* AI Summary Section */}
+            {summary && (
+              <p className="text-[#ffd600]/80 italic mt-2">{summary}</p>
             )}
-            <Badge
-              variant="outline"
-              style={{
-                backgroundColor: `var(--${mood?.color}-50)`,
-                color: `var(--${mood?.color}-700)`,
-                borderColor: `var(--${mood?.color}-200)`,
-              }}
-            >
-              Feeling {mood?.label}
-            </Badge>
+            <p className="text-[#fffbe6]/60 mt-1">
+              Created {format(new Date(entry.createdAt), "PPP")}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <EditButton entryId={id} />
+            <DeleteDialog entryId={id} />
           </div>
         </div>
-
-        <hr className="border-[#1c1c1c]/10" />
-
+        {/* Tags Section */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {entry.collection && (
+            <Link href={`/collection/${entry.collection.id}`}>
+              <Badge className="bg-[#ffd600]/20 text-[#ffd600] border-[#ffd600]">Collection: {entry.collection.name}</Badge>
+            </Link>
+          )}
+          <Badge
+            variant="outline"
+            style={{
+              backgroundColor: `var(--${mood?.color}-50, #fffbe6)` ,
+              color: `var(--${mood?.color}-700, #ffd600)` ,
+              borderColor: `var(--${mood?.color}-200, #ffd600)` ,
+            }}
+            className="border-2"
+          >
+            Feeling {mood?.label}
+          </Badge>
+        </div>
         {/* Content Section */}
-        <div className="ql-snow">
-          <div
-            className="ql-editor"
-            dangerouslySetInnerHTML={{ __html: entry.content }}
-          />
-        </div>
-
-        {/* Footer */}
-        <div className="text-sm text-[#1c1c1c]/60 pt-4 border-t border-[#1c1c1c]/10">
-          Last updated {format(new Date(entry.updatedAt), "PPP 'at' p")}
-        </div>
+        <div className="prose prose-invert max-w-none text-[#fffbe6] bg-[#232323] rounded-xl p-6 border border-[#ffd60033] shadow-inner" dangerouslySetInnerHTML={{ __html: entry.content }} />
       </div>
-    </>
+    </div>
   );
 }
